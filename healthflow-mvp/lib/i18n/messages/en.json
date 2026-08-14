@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "today": "Today",
+    "health": "Health",
+    "planner": "AI Planner",
+    "schedule": "Schedule",
+    "settings": "Settings"
+  },
+  "today": {
+    "greeting": "Good morning",
+    "conditionLabel": "Today's condition",
+    "cycleLabel": "Cycle",
+    "aiRecommendation": "AI recommendation",
+    "todaySchedule": "Today's schedule"
+  },
+  "health": {
+    "cycleStart": "Period start date",
+    "cycleEnd": "Period end date",
+    "sleepHours": "Sleep hours",
+    "sleepQuality": "Sleep quality",
+    "fatigue": "Fatigue",
+    "stress": "Stress",
+    "exercise": "Exercise",
+    "mood": "Mood",
+    "memo": "Notes",
+    "disclaimer": "This data is for personal wellness tracking, not medical diagnosis"
+  },
+  "planner": {
+    "placeholder": "e.g. When should I schedule tomorrow's important dev work?",
+    "submit": "Ask AI",
+    "confirmChange": "Review changes",
+    "approve": "Approve and apply to calendar"
+  },
+  "schedule": {
+    "connected": "Connected",
+    "daysRemaining": "{days} days remaining",
+    "disconnect": "Disconnect",
+    "optimize": "Optimize with AI",
+    "suggestedChanges": "{count} suggested changes"
+  },
+  "settings": {
+    "privacy": "Privacy",
+    "deleteAllData": "Reset health data",
+    "deleteEmail": "Delete email",
+    "retentionPolicy": "Data retention policy",
+    "integrations": "Integrations",
+    "googleCalendar": "Connect Google Calendar",
+    "notionWidget": "Connect Notion widget",
+    "birthDate": "Birth date",
+    "avgCycleLength": "Average cycle length",
+    "preferredHours": "Preferred schedule hours",
+    "sleepGoal": "Sleep goal",
+    "exerciseGoal": "Exercise goal",
+    "feedback": "Send feedback",
+    "emailOptIn": "Email preferences",
+    "terms": "Terms of service",
+    "privacyPolicy": "Privacy policy"
+  }
+}

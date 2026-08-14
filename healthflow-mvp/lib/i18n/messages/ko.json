@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "today": "오늘",
+    "health": "건강",
+    "planner": "AI 플래너",
+    "schedule": "일정",
+    "settings": "설정"
+  },
+  "today": {
+    "greeting": "좋은 아침이에요",
+    "conditionLabel": "오늘의 컨디션",
+    "cycleLabel": "주기",
+    "aiRecommendation": "AI 추천",
+    "todaySchedule": "오늘의 일정"
+  },
+  "health": {
+    "cycleStart": "생리 시작일",
+    "cycleEnd": "생리 종료일",
+    "sleepHours": "수면 시간",
+    "sleepQuality": "수면의 질",
+    "fatigue": "피로도",
+    "stress": "스트레스",
+    "exercise": "운동량",
+    "mood": "기분",
+    "memo": "메모",
+    "disclaimer": "이 데이터는 의학적 진단이 아닌 자기관리 목적으로 사용됩니다"
+  },
+  "planner": {
+    "placeholder": "예: 내일 중요한 개발 작업을 언제 하는 게 좋을까?",
+    "submit": "AI에게 물어보기",
+    "confirmChange": "변경안 확인",
+    "approve": "승인하고 캘린더에 반영"
+  },
+  "schedule": {
+    "connected": "연결됨",
+    "daysRemaining": "남은 연결 기간: {days}일",
+    "disconnect": "연결 해제",
+    "optimize": "AI 일정 최적화",
+    "suggestedChanges": "추천 변경 {count}건"
+  },
+  "settings": {
+    "privacy": "개인정보",
+    "deleteAllData": "건강 데이터 초기화",
+    "deleteEmail": "이메일 삭제",
+    "retentionPolicy": "데이터 보존 정책",
+    "integrations": "연동",
+    "googleCalendar": "Google Calendar 연결",
+    "notionWidget": "Notion Widget 연결",
+    "birthDate": "생년월일",
+    "avgCycleLength": "평균 생리주기",
+    "preferredHours": "일정 선호 시간",
+    "sleepGoal": "수면 목표",
+    "exerciseGoal": "운동 목표",
+    "feedback": "피드백 보내기",
+    "emailOptIn": "이메일 수신 설정",
+    "terms": "이용약관",
+    "privacyPolicy": "개인정보처리방침"
+  }
+}

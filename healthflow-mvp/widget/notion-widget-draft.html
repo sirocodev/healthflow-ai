@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HealthFlow AI — Today</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;1,400&family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FFF9F4;
+    --card: #FFFFFF;
+    --line: rgba(92, 80, 73, 0.07);
+    --ink: #5C5049;
+    --ink-soft: #B0A199;
+    --blush: #FFB8CB;
+    --blush-soft: #FFE3EC;
+    --lavender: #C6B8F0;
+    --lavender-soft: #EDE6FC;
+    --sage: #A8DDC6;
+    --radius: 26px;
+  }
+  *{ box-sizing: border-box; }
+  body{
+    margin:0;
+    background: var(--bg);
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    color: var(--ink);
+    padding: 28px;
+    display:flex;
+    justify-content:center;
+  }
+  .widget{
+    width: 100%;
+    max-width: 380px;
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    box-shadow: 0 1px 2px rgba(61,55,51,0.03), 0 8px 24px -12px rgba(61,55,51,0.08);
+    overflow:hidden;
+  }
+  .header{
+    padding: 22px 24px 16px;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+  }
+  .brand{
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .date{
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .hero{
+    padding: 4px 24px 22px;
+    display:flex;
+    align-items:center;
+    gap: 20px;
+  }
+  .ring-wrap{ position:relative; width:88px; height:88px; flex-shrink:0; }
+  .ring-wrap svg{ transform: rotate(-90deg); }
+  .ring-bg{ fill:none; stroke: var(--line); stroke-width: 6; }
+  .ring-fg{ fill:none; stroke: url(#ringGrad); stroke-width: 6; stroke-linecap: round; transition: stroke-dasharray 0.6s ease; }
+  .ring-label{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+  }
+  .ring-number{ font-family:'Newsreader', serif; font-size: 26px; font-weight:400; line-height:1; }
+  .ring-sub{ font-size: 9px; color: var(--ink-soft); margin-top:2px; }
+  .hero-text .label{ font-size: 11px; color: var(--ink-soft); margin-bottom: 4px; }
+  .hero-text .headline{ font-family:'Newsreader', serif; font-style: italic; font-size: 17px; line-height:1.4; color: var(--ink); }
+
+  .section{ padding: 16px 24px; border-top: 1px solid var(--line); }
+  .section-title{ font-size: 11px; letter-spacing:0.06em; color: var(--ink-soft); margin-bottom: 12px; text-transform:uppercase; }
+
+  .bar-row{ display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+  .bar-row:last-child{ margin-bottom:0; }
+  .bar-label{ font-size:12.5px; width:64px; flex-shrink:0; color: var(--ink); }
+  .bar-track{ flex:1; height:5px; border-radius:3px; background: var(--line); overflow:hidden; }
+  .bar-fill{ height:100%; border-radius:3px; }
+  .bar-value{ font-size:11.5px; color: var(--ink-soft); width:26px; text-align:right; }
+
+  .cycle-row{ display:flex; justify-content:space-between; align-items:center; }
+  .cycle-item .k{ font-size:11px; color: var(--ink-soft); margin-bottom:2px; }
+  .cycle-item .v{ font-size: 14px; font-weight: 500; }
+
+  .waves{ display:flex; align-items:center; gap: 16px; }
+  .wave-legend{ display:flex; flex-direction:column; gap:6px; font-size:11px; color: var(--ink-soft); }
+  .dot{ display:inline-block; width:6px; height:6px; border-radius:50%; margin-right:6px; }
+  .note{ font-size: 10px; color: var(--ink-soft); margin-top:10px; }
+
+  .schedule-item{ display:flex; gap:12px; padding: 7px 0; font-size: 12.5px; }
+  .schedule-time{ color: var(--ink-soft); width: 42px; flex-shrink:0; font-variant-numeric: tabular-nums; }
+  .schedule-title{ color: var(--ink); }
+  .schedule-item.ai-moved .schedule-title{ color: var(--blush); }
+  .schedule-item.ai-moved .schedule-title::after{ content: " · AI 제안"; font-size: 10px; color: var(--ink-soft); }
+
+  .insight{
+    margin: 0 24px 24px;
+    padding: 16px 18px;
+    background: linear-gradient(135deg, var(--lavender-soft), var(--blush-soft));
+    border-radius: 20px;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .insight .tag{ font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color: var(--ink-soft); display:block; margin-bottom:6px; }
+</style>
+</head>
+<body>
+<div class="widget">
+  <div class="header">
+    <span class="brand">HealthFlow AI</span>
+    <span class="date" id="todayDate"></span>
+  </div>
+
+  <div class="hero">
+    <div class="ring-wrap">
+      <svg viewBox="0 0 100 100" width="88" height="88">
+        <defs>
+          <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFB8CB"/>
+            <stop offset="100%" stop-color="#C6B8F0"/>
+          </linearGradient>
+        </defs>
+        <circle class="ring-bg" cx="50" cy="50" r="42"/>
+        <circle class="ring-fg" id="ringFg" cx="50" cy="50" r="42"/>
+      </svg>
+      <div class="ring-label">
+        <div class="ring-number" id="ringNumber">78</div>
+        <div class="ring-sub">/ 100</div>
+      </div>
+    </div>
+    <div class="hero-text">
+      <div class="label">오늘의 컨디션</div>
+      <div class="headline" id="conditionHeadline">차분히, 그러나 흐트러짐 없이.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">지표</div>
+    <div class="bar-row">
+      <span class="bar-label">집중도</span>
+      <div class="bar-track"><div class="bar-fill" style="width:82%; background:var(--lavender);"></div></div>
+      <span class="bar-value">82</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">에너지</span>
+      <div class="bar-track"><div class="bar-fill" style="width:71%; background:var(--blush);"></div></div>
+      <span class="bar-value">71</span>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">휴식 필요</span>
+      <div class="bar-track"><div class="bar-fill" style="width:63%; background:var(--sage);"></div></div>
+      <span class="bar-value">63</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">생리주기</div>
+    <div class="cycle-row">
+      <div class="cycle-item">
+        <div class="k">현재 주기</div>
+        <div class="v">Day 18</div>
+      </div>
+      <div class="cycle-item">
+        <div class="k">다음 예상일</div>
+        <div class="v">8월 21일</div>
+      </div>
+      <div class="cycle-item">
+        <div class="k">단계</div>
+        <div class="v">황체기</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Biorhythm</div>
+    <div class="waves">
+      <svg width="140" height="52" viewBox="0 0 140 52">
+        <polyline id="waveP" fill="none" stroke="var(--blush)" stroke-width="1.6"/>
+        <polyline id="waveE" fill="none" stroke="var(--lavender)" stroke-width="1.6"/>
+        <polyline id="waveI" fill="none" stroke="var(--sage)" stroke-width="1.6"/>
+        <line x1="0" y1="26" x2="140" y2="26" stroke="var(--line)" stroke-width="1"/>
+      </svg>
+      <div class="wave-legend">
+        <span><span class="dot" style="background:var(--blush)"></span>신체 86%</span>
+        <span><span class="dot" style="background:var(--lavender)"></span>감성 62%</span>
+        <span><span class="dot" style="background:var(--sage)"></span>지성 74%</span>
+      </div>
+    </div>
+    <div class="note">※ 참고용 자기관리 지표 — 실제 일정 추천은 수면·피로 데이터를 우선합니다</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">오늘의 일정</div>
+    <div class="schedule-item"><span class="schedule-time">09:00</span><span class="schedule-title">집중 업무</span></div>
+    <div class="schedule-item"><span class="schedule-time">13:00</span><span class="schedule-title">점심 · 휴식</span></div>
+    <div class="schedule-item"><span class="schedule-time">15:00</span><span class="schedule-title">회의</span></div>
+    <div class="schedule-item ai-moved"><span class="schedule-time">18:00</span><span class="schedule-title">가벼운 운동</span></div>
+  </div>
+
+  <div class="insight">
+    <span class="tag">AI Insight</span>
+    지적 리듬은 높지만 최근 수면이 짧아요. 오전에 집중 업무를 짧게 배치하고,
+    운동은 발표 이후 저녁으로 옮기는 걸 추천해요.
+  </div>
+</div>
+
+<script>
+  // ── 목데이터 기반 렌더링 (실제 버전은 /api/ai-recommendation 응답으로 대체) ──
+  document.getElementById('todayDate').textContent =
+    new Date().toLocaleDateString('ko-KR', { month: 'long', day: 'numeric', weekday: 'short' });
+
+  const overall = 78;
+  const circumference = 2 * Math.PI * 42;
+  const ringFg = document.getElementById('ringFg');
+  ringFg.style.strokeDasharray = `${(overall/100) * circumference} ${circumference}`;
+  document.getElementById('ringNumber').textContent = overall;
+
+  // 간단한 사인파 렌더 (실제 값은 lib/health-calculations.ts의 calculateBiorhythm 결과 사용)
+  function wave(el, amplitude, phase){
+    const pts = [];
+    for(let x=0; x<=140; x+=4){
+      const y = 26 - Math.sin((x/140)*Math.PI*2 + phase) * amplitude;
+      pts.push(`${x},${y.toFixed(1)}`);
+    }
+    el.setAttribute('points', pts.join(' '));
+  }
+  wave(document.getElementById('waveP'), 18, 0.3);
+  wave(document.getElementById('waveE'), 12, 1.4);
+  wave(document.getElementById('waveI'), 15, 2.1);
+</script>
+</body>
+</html>

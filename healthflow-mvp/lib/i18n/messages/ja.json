@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "today": "今日",
+    "health": "健康",
+    "planner": "AIプランナー",
+    "schedule": "スケジュール",
+    "settings": "設定"
+  },
+  "today": {
+    "greeting": "おはようございます",
+    "conditionLabel": "今日のコンディション",
+    "cycleLabel": "周期",
+    "aiRecommendation": "AIのおすすめ",
+    "todaySchedule": "今日の予定"
+  },
+  "health": {
+    "cycleStart": "生理開始日",
+    "cycleEnd": "生理終了日",
+    "sleepHours": "睡眠時間",
+    "sleepQuality": "睡眠の質",
+    "fatigue": "疲労度",
+    "stress": "ストレス",
+    "exercise": "運動量",
+    "mood": "気分",
+    "memo": "メモ",
+    "disclaimer": "このデータは医学的診断ではなく、セルフケア目的で使用されます"
+  },
+  "planner": {
+    "placeholder": "例: 明日の重要な開発作業はいつ行うのがいいですか？",
+    "submit": "AIに聞く",
+    "confirmChange": "変更案を確認",
+    "approve": "承認してカレンダーに反映"
+  },
+  "schedule": {
+    "connected": "連携済み",
+    "daysRemaining": "残り{days}日",
+    "disconnect": "連携解除",
+    "optimize": "AIでスケジュール最適化",
+    "suggestedChanges": "提案された変更 {count}件"
+  },
+  "settings": {
+    "privacy": "プライバシー",
+    "deleteAllData": "健康データを初期化",
+    "deleteEmail": "メールアドレスを削除",
+    "retentionPolicy": "データ保存ポリシー",
+    "integrations": "連携",
+    "googleCalendar": "Google カレンダー連携",
+    "notionWidget": "Notionウィジェット連携",
+    "birthDate": "生年月日",
+    "avgCycleLength": "平均生理周期",
+    "preferredHours": "希望スケジュール時間",
+    "sleepGoal": "睡眠目標",
+    "exerciseGoal": "運動目標",
+    "feedback": "フィードバックを送る",
+    "emailOptIn": "メール受信設定",
+    "terms": "利用規約",
+    "privacyPolicy": "プライバシーポリシー"
+  }
+}
